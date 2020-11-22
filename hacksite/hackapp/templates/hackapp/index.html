@@ -1,0 +1,12 @@
+<html>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'hackapp/style.css' %}">
+
+    <h2>Available Tournaments</h2>
+    <ul>
+    {% for tournament in data %}
+        <li>{{ tournament.name }} - <a href="{% url 'hackapp:signup' %}">Sign Up</a> | <a href="{% url 'hackapp:bracket' tournament.url %}">View Bracket</a></li>
+    {% endfor %} 
+    </ul>
+</html>
