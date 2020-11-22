@@ -114,6 +114,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Application Constants
+API_KEY = 'Ja7m5m7UR4dRqXldeWFIw0PwbsdnbbdTxLGUojwD'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
