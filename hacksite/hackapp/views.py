@@ -50,4 +50,4 @@ def usersignup(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'usersignup.html', {'form': form})
+    return render(request, 'hackapp/usersignup.html', {'form': form})
