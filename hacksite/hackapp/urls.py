@@ -5,5 +5,6 @@ app_name = 'hackapp' # in case we have another app that also has a path called s
 urlpatterns = [
     path('', views.index, name="index"),
     path('signup/', views.signup, name="signup"),
-    path('bracket/<str:tournament_url>/', views.bracket, name="bracket")
+    path('bracket/<str:tournament_url>/', views.bracket, name="bracket"),
+    path('create/', views.create, name="create")
 ]
