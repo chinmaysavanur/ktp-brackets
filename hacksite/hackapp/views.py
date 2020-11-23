@@ -19,8 +19,12 @@ def index(request):
 
     return render(request, 'hackapp/index.html', context)
 
-def signup(request):
-    return render(request, 'hackapp/signup.html')
+def signup(request, tournament_url):
+    context = { 
+        "api_key": settings.API_KEY,
+        "tournament_url": tournament_url 
+        }
+    return render(request, 'hackapp/signup.html', context)
 
 def bracket(request, tournament_url): 
     context = { "tournament_url": tournament_url }

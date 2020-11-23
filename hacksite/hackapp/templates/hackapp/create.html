@@ -7,9 +7,10 @@
 
     <div class="content">
         <form action="https://api.challonge.com/v1/tournaments.json" method="post">
+            <input type="hidden" name="api_key" value={{ api_key }}>
+
             <label>Create a Tournament</label><br>
             <input placeholder="tournament name" type="text" name="tournament[name]"><br>
-            <input type="hidden" name="api_key" value={{ api_key }}>
             <button type="submit">OK</button>
         </form>
     </div>
