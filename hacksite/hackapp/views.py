@@ -25,3 +25,8 @@ def signup(request):
 def bracket(request, tournament_url): 
     context = { "tournament_url": tournament_url }
     return render(request, 'hackapp/bracket.html', context)
+
+def create(request): 
+    context = { "api_key": settings.API_KEY }
+    return render(request, 'hackapp/create.html', context)
+    
