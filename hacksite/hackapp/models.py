@@ -23,6 +23,7 @@ class Player(models.Model):
 		choices=PLEDGE_CLASS_CHOICES,
 		default=ELDON,
 	)
+    # store tournament or game object (tournament id) paired with participant id thats returned on sign up
 	
 #class Leaderboard(models.Model):
     # Member variables to store the current players with the most and least accumulated points
