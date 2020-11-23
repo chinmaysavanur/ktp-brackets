@@ -1,0 +1,15 @@
+<html>
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'hackapp/style.css' %}">
+
+<a href="javascript:history.back()">Go Back</a>
+
+<div class="content">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+    </form>
+</div>
+</html>
