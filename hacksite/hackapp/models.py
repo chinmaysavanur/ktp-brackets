@@ -1,12 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 class Player(models.Model):
-	    user = models.OneToOneField(User, on_delete=models.CASCADE)
-		#phoneNumber = models.IntegerField(primary_key = true, help_text="Phone number that we store for each user")
-#		name = models.TextField(default = "Chinmay ;)", help_text="first and last name to Display")
-		pledgeClass = models.TextField(default="Eldon", help_text="name of the pledge class a user belongs to")
-		totalPoints = models.IntegerField(help_text="points that a player has accumulated")
-		#add in some code to indicate what games they are playing, please
-		#password = models.TextField(default="", help_text="password for a given user")
+	# Player inherits from Django's built-in user model
+	# The primary key for a player will be their username (phone number)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	points = models.IntegerField(blank=True)
+    # Player selects their pledge class
+	ELDON = 'Eldon'
+    OMICRON = 'Omicron'
+    PI = 'Pi'
+    RHO = 'Rho'
+    SIGMA = 'Sigma'
+    PLEDGE_CLASS_CHOICES = (
+        (ELDON, 'Eldon'),
+        (OMICRON, 'Omicron'),
+        (PI, 'Pi'),
+        (RHO, 'Rho'),
+        (SIGMA, 'Sigma'),
+    )
+    pledgeClass = models.TextField(
+        choices=PLEDGE_CLASS_CHOICES,
+        default=ELDON,
+    )
+	
+class Leaderboard(models.Model):
+    # Member variables to store the current players with the most and least accumulated points
+    firstPlace = models.ForeignKey(Player, null=True, blank=True, on_delete=models.CASCADE)
+    secondPlace = models.ForeignKey(Player, null=True, blank=True, on_delete=models.CASCADE)
+    thirdPlace = models.ForeignKey(Player, null=True, blank=True, on_delete=models.CASCADE)
+    lastPlace = models.ForeignKey(Player, null=True, blank=True, on_delete=models.CASCADE)
+
+class Game(models.Model):
+    # Insert code related to a game
