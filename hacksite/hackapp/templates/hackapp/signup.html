@@ -6,10 +6,12 @@
     <a href="javascript:history.back()">Go Back</a>
 
     <div class="content">   
-        <form>
+        <form action="https://api.challonge.com/v1/tournaments/{{ tournament_url }}/participants.json" method="post">
+            <input type="hidden" name="api_key" value={{ api_key }}>
+
             <label>Sign up for the Tournament</label><br>
-            <input placeholder="type your name" type="text"><br>
-            <input placeholder="type your email" type="email"><br>
+            <input placeholder="type your name" type="text" name="participant[name]"><br>
+            <input placeholder="type your email" type="email" name="participant[email]"><br>
             <button type="submit">OK</button>
         </form>
     </div>
