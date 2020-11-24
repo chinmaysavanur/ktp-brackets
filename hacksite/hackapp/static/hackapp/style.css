@@ -1,6 +1,6 @@
 .content {
     margin: 0 auto;
-    width: 500px;
+    display: block;
 }
 
 iframe {

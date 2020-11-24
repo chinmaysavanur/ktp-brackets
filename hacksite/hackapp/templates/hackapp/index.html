@@ -5,7 +5,7 @@
 
     <h2>Available Tournaments</h2>
     <ul>
-    {% for tournament in data %}
+    {% for tournament in tournaments %}
         <li>{{ tournament.name }} - <a href="{% url 'hackapp:signup' tournament.url %}">Sign Up</a> | <a href="{% url 'hackapp:bracket' tournament.url %}">View Bracket</a></li>
     {% endfor %} 
     </ul>
