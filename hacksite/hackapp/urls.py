@@ -8,5 +8,7 @@ urlpatterns = [
     path('signup/<str:tournament_url>/', views.signup, name="signup"),
     path('bracket/<str:tournament_url>/', views.bracket, name="bracket"),
     path('create/', views.create, name="create"), 
-    path('usersignup/', views.usersignup, name="usersignup")
+    path('usersignup/', views.usersignup, name="usersignup"),
+    path('userlogin/', views.userlogin, name="userlogin"),
+    path('dashboard/', views.dashboard, name="dashboard")
 ]
