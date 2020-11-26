@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
 ROOT_URLCONF = 'hacksite.urls'
@@ -114,6 +115,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Application Constants
+API_KEY = 'Ja7m5m7UR4dRqXldeWFIw0PwbsdnbbdTxLGUojwD'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
