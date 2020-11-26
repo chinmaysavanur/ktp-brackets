@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
+from .forms import NewUserForm
 
 import requests
 
@@ -38,16 +39,37 @@ def create(request):
     context = { "api_key": settings.API_KEY }
     return render(request, 'hackapp/create.html', context)
 
+def dashboard(request):
+    return render(request, 'hackapp/dashboard.html')
+
 def usersignup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('hackapp:dashboard')
     else:
-        form = UserCreationForm()
+        form = NewUserForm()
     return render(request, 'hackapp/usersignup.html', {'form': form})
+
+def userlogin(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                #messages.info(request, f"You are now logged in as {username}")
+                return redirect('hackapp:dashboard')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'hackapp/userlogin.html', {'form': form})
+
