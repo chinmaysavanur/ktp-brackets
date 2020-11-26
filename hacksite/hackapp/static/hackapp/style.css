@@ -1,0 +1,9 @@
+.content {
+    margin: 0 auto;
+    width: 500px;
+}
+
+iframe {
+    margin: 5% auto;
+    display: block;
+}
