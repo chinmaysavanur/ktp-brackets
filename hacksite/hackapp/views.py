@@ -49,6 +49,8 @@ def usersignup(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
             email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
