@@ -1,0 +1,15 @@
+<html>
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'hackapp/style.css' %}">
+
+<a href="javascript:history.back()">Go Back</a>
+
+<div class="content">
+    <p> Hello, <b> {{user.get_full_name}} </b></p>
+    <h4> Profile Information: </h4>
+    <p> <b> Email: </b> {{ user.email }}</p>
+    <p> <b> Username: </b> {{ user.get_username }}</p>
+</div>
+
+</html>
