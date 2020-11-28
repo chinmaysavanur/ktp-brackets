@@ -1,15 +1,21 @@
 <html>
     {% load static %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'hackapp/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'hackapp/style.css' %}">
 
-    <h2>Available Tournaments</h2>
-    <ul>
-    {% for tournament in tournaments %}
-        <li>{{ tournament.name }} - <a href="{% url 'hackapp:signup' tournament.url %}">Sign Up</a> | <a href="{% url 'hackapp:bracket' tournament.url %}">View Bracket</a></li>
-    {% endfor %} 
-    </ul>
+<h2>Available Tournaments</h2>
+<ul>
+    {% for tournament in data %}
+    <li>{{ tournament.name }} - <a href="{% url 'hackapp:signup' tournament.url %}">Sign Up</a> | <a href="{% url 'hackapp:bracket' tournament.url %}">View Bracket</a></li>
+    {% endfor %}
+</ul>
 
-    <h2>Create a Tournament</h2>
-    <a href="{% url 'hackapp:create' %}">Here</a>
+<h2>Create a Tournament</h2>
+<a href="{% url 'hackapp:create' %}">Here</a>
+
+<h2>Sign up</h2>
+<a href="{% url 'hackapp:usersignup' %}">Here</a>
+
+<h2>Log In</h2>
+<a href="{% url 'hackapp:userlogin' %}">Here</a>
 </html>
