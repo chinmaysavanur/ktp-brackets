@@ -6,3 +6,4 @@ __pycache__/
 .vs/ProjectSettings.json
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
+.vs/slnx.sqlite-journal
