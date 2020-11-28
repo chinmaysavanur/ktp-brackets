@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
+
+from . import models
+import requests
+
+participant_id = 134634051
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from .forms import NewUserForm
-
-import requests
 
 # Create your views here.
 def index(request):
@@ -15,12 +18,14 @@ def index(request):
     tournamentsList = []
 
     for tournament in tournaments: 
-        tournamentsList.append({
-                "name": tournament['tournament']['name'],
-                "url": tournament['tournament']['url']
-            })
+        tournamentsList.append(models.Tournament(
+            tournament['tournament']['name'], 
+            tournament['tournament']['id'], 
+            tournament['tournament']['url'])
+        )
+        
+    context = { 'tournaments': tournamentsList }
 
-    context = { 'data': tournamentsList }
 
     return render(request, 'hackapp/index.html', context)
 
@@ -32,7 +37,22 @@ def signup(request, tournament_url):
     return render(request, 'hackapp/signup.html', context)
 
 def bracket(request, tournament_url): 
-    context = { "tournament_url": tournament_url }
+    state = 'open'
+
+    response = requests.get(f'https://api.challonge.com/v1/tournaments/{ tournament_url }/matches.json?api_key={ settings.API_KEY }&state={ state }&participant_id={ participant_id }')
+    matches = response.json()
+
+    matchesList = []
+
+    for match in matches:
+        matchesList.append(match['match'])
+
+    context = { 
+        "tournament_url": tournament_url, 
+        "participant_id": participant_id,
+        "matches": matchesList
+        }
+
     return render(request, 'hackapp/bracket.html', context)
 
 def create(request): 
@@ -74,4 +94,3 @@ def userlogin(request):
         form = AuthenticationForm()
 
     return render(request, 'hackapp/userlogin.html', {'form': form})
-
