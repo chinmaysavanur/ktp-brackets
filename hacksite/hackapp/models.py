@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Create your models here.
+class Tournament:
+    def __init__(self, name, id, url):
+        self.name = name
+        self.id = id
+        self.url = url
 class Player(models.Model):
 	# Player inherits from Django's built-in user model
 	# The primary key for a player will be their username (phone number)
