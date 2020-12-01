@@ -5,5 +5,22 @@
 
     <a href="javascript:history.back()">Go Back</a>
 
-    <iframe src="https://challonge.com/{{ tournament_url }}/module" width="80%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+    <h2></h2>
+
+    <iframe src="https://challonge.com/{{ tournament_url }}/module?show_final_results=1&show_standings=1" width="80%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+
+    <div class="content">
+        Report Score for Your Matches
+        {% if not matches %}
+            <p><strong>You have no matches in this game</strong></p>
+        {% else %}
+            <ul>
+            {% for match in matches %}
+                <li>{{ match.id }}</li>
+                <button>WON</button><button>LOST</button>
+            {% endfor %} 
+            </ul>
+        {% endif %}
+    </div>
+
 </html>
