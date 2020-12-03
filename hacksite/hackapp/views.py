@@ -9,7 +9,7 @@ participant_id = 134634051
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, NewPlayerForm
 
 # Create your views here.
 def index(request):
@@ -64,20 +64,28 @@ def dashboard(request):
 
 def usersignup(request):
     if request.method == 'POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
-            email = form.cleaned_data.get('email')
+        user_form = NewUserForm(request.POST, instance=request.user)
+        player_form = NewPlayerForm(request.POST, instance=request.user.player)
+        if user_form.is_valid() and player_form.isvalid():
+            user_form.save()
+            player_form.save()
+
+            username = user_form.cleaned_data.get('username')
+            raw_password = user_form.cleaned_data.get('password1')
+            first_name = user_form.cleaned_data.get('first_name')
+            last_name = user_form.cleaned_data.get('last_name')
+            email = user_form.cleaned_data.get('email')
+
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('hackapp:dashboard')
     else:
-        form = NewUserForm()
-    return render(request, 'hackapp/usersignup.html', {'form': form})
+        user_form = NewUserForm()
+        player_form = NewPlayerForm()
+    return render(request, 'hackapp/usersignup.html', {
+        'user_form': user_form, 
+        'player_form': player_form
+    })
 
 def userlogin(request):
     if request.method == 'POST':
