@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 class Tournament:
@@ -11,7 +13,7 @@ class Player(models.Model):
 	# Player inherits from Django's built-in user model
 	# The primary key for a player will be their username (phone number)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	points = models.IntegerField(blank=True)
+	points = models.IntegerField(blank=True, default=0)
     # Player selects their pledge class
 	ELDON = 'Eldon'
 	OMICRON = 'Omicron'
@@ -30,7 +32,14 @@ class Player(models.Model):
 		default=ELDON,
 	)
     # store tournament or game object (tournament id) paired with participant id thats returned on sign up
-	
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Player.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.player.save()
 #class Leaderboard(models.Model):
     # Member variables to store the current players with the most and least accumulated points
     #firstPlace = models.ForeignKey(Player, null=True, blank=True, on_delete=models.CASCADE)
