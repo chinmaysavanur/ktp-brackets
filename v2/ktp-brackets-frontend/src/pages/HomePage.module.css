@@ -1,0 +1,27 @@
+.games {
+  width: 66.6%;
+}
+
+.gameUpdatesContainer {
+  width: 33.3%;
+}
+
+.myGamesContainer {
+  height: 33.3%;
+}
+
+.activeGamesContainer {
+  height: 66.6%;
+}
+
+.myGamesGameList {
+  display: flex;
+  height: 80%;
+}
+
+.gamePreview {
+  width: 30%;
+  /* min-width: 200px; */
+  background-color: #1e1e1e;
+  border-radius: 30px;
+}
