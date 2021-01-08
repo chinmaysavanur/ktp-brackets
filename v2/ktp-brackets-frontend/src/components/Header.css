@@ -1,0 +1,133 @@
+header {
+  background-color: #c4c4c4;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.2em;
+}
+
+/* left side - logo*/
+
+.nav-logo img {
+  height: 3rem;
+}
+
+/*  right side */
+
+.nav-right-items {
+  display: flex;
+  height: 100%;
+}
+
+.nav-items-list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 0.5em;
+}
+
+.nav-item-link {
+  display: inline-block;
+  font-size: 1.5rem;
+  background-color: black;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.1em 0.5em;
+  text-align: center;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.nav-item-profile {
+  height: 100%;
+  margin-top: 10px;
+  font-size: 0.5rem;
+}
+
+.nav-item-profile a {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  color: black;
+  height: 100%;
+}
+
+.nav-item-profile-responsive {
+  display: none;
+}
+
+.nav-menu-bars {
+  color: black;
+  display: none;
+}
+
+.current-page {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+/* media queries responsivity */
+
+@media (max-width: 675px) {
+  header {
+    justify-content: center;
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    padding: 0;
+    padding-top: 0.2em;
+  }
+
+  /* controls top row */
+  .nav-left-items {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-menu-bars {
+    position: absolute;
+    display: inline-block;
+    right: 0.5em;
+    font-size: 1.8rem;
+  }
+
+  /* control right items and makes dropdown possible  */
+  .nav-right-items {
+    display: none;
+  }
+
+  .nav-right-items.active {
+    display: block;
+    width: 100%;
+    padding-top: 0.5em;
+  }
+
+  .nav-items-list.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-items-list.active li {
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav-items-list.active a {
+    width: inherit;
+  }
+
+  .nav-item-profile {
+    display: none;
+  }
+
+  .nav-item-profile-responsive {
+    display: block;
+  }
+}

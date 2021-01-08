@@ -1,62 +1,78 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../KTP_brackets_logo.png';
 import profile from '../Profile.png';
-import styled from 'styled-components';
+import * as AiIcons from 'react-icons/ai';
+import './Header.css';
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em;
-  background-color: #c4c4c4;
-`;
+const Header = () => {
+  const [toggle, setToggle] = useState(false);
 
-const Logo = styled.a`
-  margin-left: 1em;
-`;
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
 
-const NavLinks = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+  return (
+    <header>
+      <div className='nav-left-items'>
+        <Link className='nav-logo' to='/'>
+          <img src={logo} alt=''></img>
+        </Link>
 
-  margin: 0;
-  padding: 0;
-`;
+        <Link className='nav-menu-bars' onClick={handleClick}>
+          <AiIcons.AiOutlineMenu></AiIcons.AiOutlineMenu>
+        </Link>
+      </div>
 
-const StyledLink = styled(NavLink)`
-  display: inline-block;
-  font-size: 1.5rem;
-  background-color: black;
-  text-decoration: none;
-  color: inherit;
-  padding: 0.2em 0.5em;
-  margin: 0px 0.3em;
-  text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  &.active {
-    color: black;
-    background-color: white;
-    font-weight: bold;
-  }
-`;
-
-const Header = () => (
-  <Nav className='header'>
-    <Logo>
-      <img style={{ height: '100%' }} src={logo} alt='logo'></img>
-    </Logo>
-
-    <NavLinks>
-      <StyledLink exact to='/'>
-        Home
-      </StyledLink>
-      <StyledLink to='/brackets'>Brackets</StyledLink>
-      <StyledLink to='/leaderboard'>Leaderboard</StyledLink>
-    </NavLinks>
-  </Nav>
-);
+      <nav className={'nav-right-items' + (toggle ? ' active' : '')}>
+        <ul className={'nav-items-list' + (toggle ? ' active' : '')}>
+          <li className='nav-item'>
+            <NavLink
+              className='nav-item-link'
+              exact
+              to='/home'
+              activeClassName='current-page'
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink
+              className='nav-item-link'
+              to='/brackets'
+              activeClassName='current-page'
+            >
+              Brackets
+            </NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink
+              className='nav-item-link'
+              to='/leaderboard'
+              activeClassName='current-page'
+            >
+              Leaderboard
+            </NavLink>
+          </li>
+          <li className='nav-item-profile'>
+            <NavLink className='nav-profile-link' to='/personal'>
+              <img src={profile} alt=''></img>
+              <p>Last, First</p>
+            </NavLink>
+          </li>
+          <li className='nav-item-profile-responsive'>
+            <NavLink
+              className='nav-item-link'
+              to='/personal'
+              activeClassName='current-page'
+            >
+              Profile
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

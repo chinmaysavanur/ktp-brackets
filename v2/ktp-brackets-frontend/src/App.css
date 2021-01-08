@@ -4,29 +4,30 @@
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
 body {
   /* border: 2px green solid; */
   font-family: 'Roboto', sans-serif;
   color: white;
+  height: 100vh;
 }
 
-.header {
-  height: 6vh;
+#root {
+  height: 100%;
 }
 
-.home {
-  /* border: 2px blue solid; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 2em 4em;
+.page {
   background-color: #272727;
-  height: 94vh;
   font-size: 1.1em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
