@@ -1,0 +1,14 @@
+.home {
+  /* height: 100vh; */
+}
+
+h2 {
+  margin: 0 0 0.5em 0;
+}
+
+.main-game-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
