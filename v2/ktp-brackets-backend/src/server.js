@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { MongoClient } from 'mongodb';
 
+import secrets from 'secrets.js';
+
 const app = express();
 
 app.use(cors());
