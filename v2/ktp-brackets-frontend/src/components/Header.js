@@ -15,11 +15,11 @@ const Header = () => {
   return (
     <header>
       <div className='nav-left-items'>
-        <Link className='nav-logo' to='/'>
+        <Link className='nav-logo' to='/home'>
           <img src={logo} alt=''></img>
         </Link>
 
-        <Link className='nav-menu-bars' onClick={handleClick}>
+        <Link to='#' className='nav-menu-bars' onClick={handleClick}>
           <AiIcons.AiOutlineMenu></AiIcons.AiOutlineMenu>
         </Link>
       </div>
@@ -55,7 +55,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li className='nav-item-profile'>
-            <NavLink className='nav-profile-link' to='/personal'>
+            <NavLink className='nav-item-profile-link' to='/personal'>
               <img src={profile} alt=''></img>
               <p>Last, First</p>
             </NavLink>
@@ -66,7 +66,7 @@ const Header = () => {
               to='/personal'
               activeClassName='current-page'
             >
-              Profile
+              Personal
             </NavLink>
           </li>
         </ul>
