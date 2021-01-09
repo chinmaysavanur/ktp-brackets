@@ -4,9 +4,8 @@ const Schema = mongoose.Schema
 const User = new Schema(
     {
         name: { type: String, required: true },
+        email: { type: String, required: true},
         pledgeClass: { type : String, required: true },
-        time: { type: [String], required: true },
-        rating: { type: Number, required: true },
     },
     { timestamps: true },
 )
