@@ -11,4 +11,20 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
+
+  margin: 3em 4em;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-row {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
 }

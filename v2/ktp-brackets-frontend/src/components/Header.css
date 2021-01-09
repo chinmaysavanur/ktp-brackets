@@ -34,28 +34,26 @@ header {
 }
 
 .nav-item-link {
-  display: inline-block;
+  display: block;
   font-size: 1.5rem;
   background-color: black;
   text-decoration: none;
   color: inherit;
   padding: 0.1em 0.5em;
   text-align: center;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
 }
 
 .nav-item-profile {
-  height: 100%;
-  margin-top: 10px;
   font-size: 0.5rem;
+  display: flex;
 }
 
-.nav-item-profile a {
+.nav-item-profile-link {
   text-decoration: none;
   display: inline-block;
   text-align: center;
   color: black;
-  height: 100%;
 }
 
 .nav-item-profile-responsive {
