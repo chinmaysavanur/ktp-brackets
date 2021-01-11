@@ -1,0 +1,2 @@
+DB_CONNECT = mongodb+srv://admin-user:techyeah@cluster0.qgmn1.mongodb.net/main_data?retryWrites=true&w=majority
+JWT_SECRET = goodjobguyswearedoinggreat
