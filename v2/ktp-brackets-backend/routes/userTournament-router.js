@@ -1,6 +1,6 @@
 const express = require('express');
 
-const UserCtrl = require('../controllers/user-ctrl');
+const UserTournamentCtrl = require('../controllers/userTournament-ctrl');
 
 const router = express.Router();
 
