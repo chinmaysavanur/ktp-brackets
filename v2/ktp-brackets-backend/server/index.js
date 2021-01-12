@@ -6,7 +6,7 @@ const mongo = require('mongodb');
 //import secrets from 'secrets.js';
 
 const db = require('./db');
-const userRouter = require('../routes/user-router');
+const userTournamentRouter = require('../routes/userTournament-router');
 const authRouter = require('../routes/auth-router');
 const exampleProtectedRoute = require('../routes/exampleProtectedRoute');
 
@@ -19,7 +19,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.get('/', (req, res) => res.send('Hello!'));
 
-app.use('/api/user', userRouter);
+app.use('/api/userTournament', userTournamentRouter);
 
 app.use('/api/auth', authRouter);
 
