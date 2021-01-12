@@ -33,6 +33,20 @@ createUserTournament = (req, res) => {
         })
 }
 
+getTournamentsByUser = async (req, res) => {
+    await UserTournament.find({ _id: req.params._id }, (err, userTournament) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err})
+        }
+
+        if (!userTournament) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Tournament not found`})
+        }
+    }).catch(err => console.log(err))
+}
+
 module.exports = {
     createUserTournament,
 }
