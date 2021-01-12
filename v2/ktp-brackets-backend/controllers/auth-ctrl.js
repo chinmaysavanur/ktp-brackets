@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
   }
 
   // check if user exists already via email
-  const emailExists = await User.findOne({ email: req.body.email });
+  const emailExists = await User.findOne({ email: body.email });
   if (emailExists) return res.status(400).send('Email already exists');
 
   // hash password

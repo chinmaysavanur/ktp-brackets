@@ -13,7 +13,7 @@ h2 {
   justify-content: space-between;
   flex-wrap: wrap-reverse;
 
-  margin: 3em 4em;
+  margin: 2em 4em;
 }
 
 .left-content {
@@ -27,4 +27,38 @@ h2 {
   justify-content: flex-start;
   flex-wrap: wrap;
   font-size: 0.75rem;
+}
+
+.create-game-box {
+  width: 250px;
+  height: 204px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 30px;
+  font-size: 1.5rem;
+}
+
+.arrow-more {
+  width: 250px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 3em;
+  align-items: center;
+}
+
+.game-updates-container {
+  width: 30%;
+  border-radius: 15px;
+  background-color: #828282;
+}
+
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+  .arrow-more {
+    padding: 1.5em;
+    padding-bottom: 2.5em;
+    justify-content: center;
+  }
 }

@@ -67,7 +67,12 @@ const GamePreview = (props) => {
 
           <StyledBracketInfo>
             <div
-              style={{ display: 'flex', height: '100%', alignItems: 'center' }}
+              style={{
+                display: 'flex',
+                height: '100%',
+                flexGrow: 1,
+                alignItems: 'center',
+              }}
             >
               <img
                 src={ParticipantsLogo}
