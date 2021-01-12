@@ -47,6 +47,22 @@ getTournamentsByUser = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getUsersByTournament = async (req, res) => {
+    await UserTournament.find({ tournamentID: req.params.tournamentID }, (err, userTournament) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!userTournament) {
+            return res
+                .status(404)
+                .json({ success: false, error: `User not found` })
+        }
+    }).catch(err => console.log(err))
+}
+
 module.exports = {
     createUserTournament,
+    getTournamentsByUser,
+    getUsersByTournament,
 }
