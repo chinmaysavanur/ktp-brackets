@@ -32,3 +32,46 @@ createTournament = (req, res) => {
             })
         })
 }
+
+updateTournament = async (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    Tournament.findOne({ _id: req.params.id }, (err, tournament) => {
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Tournament not found!',
+            })
+        }
+        tournament.tournamentName = body.tournamentName
+        tournament.tournamentType = body.tournamentType
+        tournament.numParticipants = body.numParticipants
+        tournament.startDate = body.startDate
+        tournament.endDate = body.endDate
+        tournament.isActive = body.isActive
+        tournament.signUpOpen = body.signUpOpen
+        tournament.tournamentID = body.tournamentID
+        tournament
+            .save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    id: tournament._id,
+                    message: 'Tournament updated!',
+                })
+            })
+            .catch(error => {
+                return res.status(404).json({
+                    error,
+                    message: 'Tournament not updated!',
+                })
+            })
+    })
+}
