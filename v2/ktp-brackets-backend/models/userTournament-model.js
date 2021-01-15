@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const UserTournament = new Schema(
     {
-        name: { type: String, required: true },
-        tournamentID: {type: String, required: false},
-  },
+        name: { type: String, required: true }, 
+        tournamentID: { type: String, required: true },
+    },
   { timestamps: true }
 );
 
