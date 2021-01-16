@@ -92,8 +92,39 @@ deleteTournament = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getTournamentById = async (req, res) => {
+    await Tournament.findOne({ _id: req.params.id }, (err, tournament) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!tournament) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Tournament not found` })
+        }
+        return res.status(200).json({ success: true, data: tournament })
+    }).catch(err => console.log(err))
+}
+
+getTournaments = async (req, res) => {
+    await Tournament.find({}, (err, tournament) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!tournaments.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Tournament not found` })
+        }
+        return res.status(200).json({ success: true, data: tournaments })
+    }).catch(err => console.log(err))
+}
+
 module.exports = {
     createTournament,
     updateTournament,
     deleteTournament,
+    getTournamentById,
+    getTournaments,
 }
